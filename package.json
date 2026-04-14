@@ -34,18 +34,17 @@
   ],
   "author": {
     "name": "zx1998",
-    "email": "zxtest7985@163.com",
-    "url": "https://github.com/zx1998/dhf-rpa-skills"
+    "email": "zxtest7985@163.com"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zx1998/dhf-rpa-skills.git"
+    "url": "https://github.com/YOUR_USERNAME/dhf-rpa-skills.git"
   },
   "bugs": {
-    "url": "https://github.com/zx1998/dhf-rpa-skills/issues"
+    "url": "https://github.com/YOUR_USERNAME/dhf-rpa-skills/issues"
   },
-  "homepage": "https://github.com/zx1998/dhf-rpa-skills#readme",
+  "homepage": "https://github.com/YOUR_USERNAME/dhf-rpa-skills#readme",
   "dependencies": {
     "inquirer": "^9.2.0",
     "chalk": "^5.3.0",

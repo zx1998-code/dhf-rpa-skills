@@ -49,7 +49,7 @@ npm login
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zx1998/dhf-rpa-skills.git"
+    "url": "https://github.com/YOUR_USERNAME/dhf-rpa-skills.git"
   },
   "keywords": ["dhf", "rpa", "automation"],
   "files": [
