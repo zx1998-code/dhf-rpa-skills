@@ -1,0 +1,30 @@
+{
+  "name": "@dhf-rpa/test-workflow",
+  "version": "1.0.0",
+  "description": "DHF Agent RPA 基础功能测试工作流",
+  "type": "module",
+  "main": "scripts/main.js",
+  "bin": {
+    "dhf-rpa-test": "scripts/cli.js"
+  },
+  "scripts": {
+    "start": "node scripts/cli.js",
+    "test": "node scripts/cli.js"
+  },
+  "keywords": [
+    "dhf",
+    "rpa",
+    "test",
+    "测试",
+    "workflow",
+    "工作流"
+  ],
+  "author": "DHF RPA Skills",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

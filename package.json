@@ -1,0 +1,41 @@
+{
+  "name": "dhf-rpa-skills",
+  "version": "1.0.0",
+  "description": "DHF Agent RPA 自动化技能包 - 按需安装",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "install": "node scripts/install.js",
+    "install:batch": "node scripts/install.js --batch",
+    "uninstall": "node scripts/uninstall.js",
+    "sync": "node scripts/sync.js",
+    "list": "node scripts/list.js",
+    "update": "node scripts/update.js",
+    "setup": "node scripts/setup.js"
+  },
+  "keywords": [
+    "dhf",
+    "rpa",
+    "automation",
+    "claude-code",
+    "skills"
+  ],
+  "author": "DHF RPA Community",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^9.2.0",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.0",
+    "cli-table3": "^0.6.3"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

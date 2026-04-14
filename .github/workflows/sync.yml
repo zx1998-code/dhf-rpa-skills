@@ -1,0 +1,55 @@
+name: Sync Skills Registry
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+  schedule:
+    - cron: '0 0 * * *'  # 每天午夜运行
+  workflow_dispatch:      # 允许手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Update skills registry
+        run: |
+          # 扫描 skills 目录，生成技能列表
+          echo "Scanning skills directory..."
+          node scripts/update-registry.js || true
+
+      - name: Check for changes
+        id: verify
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.verify.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "chore: 更新技能注册表 [skip ci]" || exit 0
+          git push
+
+      - name: Create summary
+        if: always()
+        run: |
+          echo "## 技能同步完成" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- 扫描时间: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- 状态: ${{ steps.verify.outputs.has_changes == 'true' && '有更新' || '无更新' }}" >> $GITHUB_STEP_SUMMARY
