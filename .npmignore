@@ -1,0 +1,46 @@
+# 开发文件
+.git/
+.github/
+.gitignore
+.gitattributes
+
+# 文档（发布时不需要全部）
+*.md
+!README.md
+!INSTALL.md
+!LICENSE
+DESIGN.md
+DEVELOPMENT.md
+QUICKSTART.md
+PROJECT_SUMMARY.md
+
+# 测试
+test/
+tests/
+*.test.js
+*.spec.js
+coverage/
+
+# 开发配置
+.vscode/
+.idea/
+*.iml
+
+# 临时文件
+*.tmp
+*.temp
+*.log
+.DS_Store
+Thumbs.db
+
+# 构建文件（如果有）
+dist/
+build/
+
+# Claude 插件配置（动态生成，不需要发布）
+.claude-plugin/
+
+# 锁文件
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

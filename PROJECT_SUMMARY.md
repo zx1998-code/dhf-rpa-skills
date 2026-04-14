@@ -17,7 +17,8 @@ dhf-rpa-skills/
 │   ├── uninstall.js             # ✅ 卸载脚本
 │   ├── list.js                  # ✅ 列表查看
 │   ├── sync.js                  # ✅ 同步脚本
-│   └── setup.js                 # ✅ 环境检查
+│   ├── setup.js                 # ✅ 环境检查
+│   └── prepare.js               # ✅ 发布前检查
 ├── skills/                       # 技能目录
 │   └── dhf-rpa-test-workflow/   # ✅ 示例技能
 │       ├── SKILL.md
@@ -171,6 +172,29 @@ npm install
 npm run install
 ```
 
+### 4. 发布到 npm（可选）
+
+如果要将包发布到 npm registry：
+
+```bash
+# 登录 npm
+npm login
+
+# 更新 package.json 中的包名（使用 scoped 包名）
+# "name": "@你的用户名/dhf-rpa-skills"
+
+# 运行发布前检查
+npm run prepublishOnly
+
+# 预览发布内容
+npm run publish:preview
+
+# 正式发布
+npm run publish:public
+```
+
+详细指南请参考 [PUBLISHING.md](PUBLISHING.md)
+
 ### 4. 添加更多技能
 
 参考 `DEVELOPMENT.md` 添加新技能。
@@ -221,7 +245,21 @@ git push
 | INSTALL.md | 安装指南 | ✅ |
 | QUICKSTART.md | 快速开始 | ✅ |
 | DEVELOPMENT.md | 开发指南 | ✅ |
+| PUBLISHING.md | npm 发布指南 | ✅ |
 | PROJECT_SUMMARY.md | 项目总结 | ✅ |
+
+## npm 发布
+
+### 发布脚本
+
+| 脚本 | 说明 |
+|------|------|
+| `npm run prepublishOnly` | 发布前检查 |
+| `npm run publish:preview` | 预览发布内容 |
+| `npm run publish:public` | 正式发布到 npm |
+| `npm run version:patch` | 更新补丁版本 |
+| `npm run version:minor` | 更新次版本 |
+| `npm run version:major` | 更新主版本 |
 
 ## 依赖项
 

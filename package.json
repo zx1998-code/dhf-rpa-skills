@@ -2,7 +2,7 @@
   "name": "dhf-rpa-skills",
   "version": "1.0.0",
   "description": "DHF Agent RPA 自动化技能包 - 按需安装",
-  "private": true,
+  "private": false,
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -14,17 +14,38 @@
     "sync": "node scripts/sync.js",
     "list": "node scripts/list.js",
     "update": "node scripts/update.js",
-    "setup": "node scripts/setup.js"
+    "setup": "node scripts/setup.js",
+    "prepublishOnly": "node scripts/prepare.js",
+    "publish:preview": "npm publish --dry-run",
+    "publish:public": "npm publish --access public",
+    "version:patch": "npm version patch && git push --follow-tags",
+    "version:minor": "npm version minor && git push --follow-tags",
+    "version:major": "npm version major && git push --follow-tags"
   },
   "keywords": [
     "dhf",
     "rpa",
     "automation",
     "claude-code",
-    "skills"
+    "skills",
+    "browser",
+    "web",
+    "workflow"
   ],
-  "author": "DHF RPA Community",
+  "author": {
+    "name": "DHF RPA Community",
+    "email": "community@dhf.pub",
+    "url": "https://github.com/你的用户名/dhf-rpa-skills"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/你的用户名/dhf-rpa-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/你的用户名/dhf-rpa-skills/issues"
+  },
+  "homepage": "https://github.com/你的用户名/dhf-rpa-skills#readme",
   "dependencies": {
     "inquirer": "^9.2.0",
     "chalk": "^5.3.0",
@@ -37,5 +58,13 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "files": [
+    "scripts/",
+    "skills/",
+    "packages/",
+    "README.md",
+    "LICENSE",
+    "INSTALL.md"
+  ]
 }
