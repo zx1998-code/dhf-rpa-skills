@@ -231,9 +231,14 @@ class PublishPreparer {
     if (name.startsWith('@')) {
       this.log(`  ✅ 使用 scoped 包名: ${name}`, 'success');
 
-      // 检查 scope 是否已设置
-      if (execSync(`npm access ls ${name}`, { encoding: 'utf-8', stdio: 'pipe' })) {
-        this.log('  ⚠️  包名可能已被占用', 'warning');
+      // 检查包是否已存在
+      try {
+        execSync(`npm view ${name} version`, { encoding: 'utf-8', stdio: 'pipe' });
+        this.warnings.push(`包名 ${name} 已存在于 npm registry`);
+        this.log('  ⚠️  包名已存在，发布时会更新现有包', 'warning');
+      } catch (error) {
+        // 包不存在，可以正常发布
+        this.log('  ✅ 包名可用', 'success');
       }
     } else {
       this.warnings.push('建议使用 scoped 包名 (如 @dhf-rpa/skills)');
